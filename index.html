@@ -11,26 +11,24 @@
 
 <body>
 
-    <!-- =========================
-         PRIMEIRA SEÇÃO / VÍDEO
-         ========================= -->
+    <!-- PRIMEIRA SEÇÃO / VÍDEO -->
     <main>
         <section class="hero" id="inicio">
 
-            <!-- TROQUE ESTE BLOCO PELO VÍDEO DEPOIS -->
-            <div class="video-placeholder" aria-label="Local reservado para o vídeo">
-                <span class="play-icon">▶</span>
-                <span>VÍDEO AQUI</span>
+            <video class="hero-video" autoplay muted loop playsinline preload="auto">
+                <source src="video/Imersão Mente INABALÁVEL - Hipnólogo Rodrigo Monteiro (1080p, h264, youtube).mp4" type="video/mp4">
+            </video>
+
+            <div class="video-audio-controls" aria-label="Controles de áudio do vídeo">
+                <button class="video-mute" type="button" aria-pressed="true">ATIVAR SOM</button>
+                <label for="video-volume">VOLUME</label>
+                <input id="video-volume" type="range" min="0" max="1" step="0.01" value="1" aria-label="Volume do vídeo">
             </div>
 
             <div class="hero-content">
 
                 <header class="brand">
-                    <div class="brand-icon"></div>
-                    <div class="brand-text">
-                        <strong>LOGO</strong>
-                        <span>AQUI</span>
-                    </div>
+                    <img src="img/MENTE INABALÁVEL (43).png" alt="Logo Mente Inabalável" class="png">
                 </header>
 
                 <div class="hero-copy">
@@ -143,27 +141,28 @@
                         <h2>A MENTE QUE TE <br>
                             <span>LIMITA</span>
                         </h2>
-                            <img src="img/Ícone Cérebro(1).png" alt="Ilustração de um Cérebro" class="card-image">
+                        <img src="img/Ícone Cérebro(1).png" alt="Ilustração de um Cérebro" class="card-image">
 
-                            <ul class="card-dark-list">
-                                <li>Crenças limitantes</li>
-                                <li>Bloqueios mentais</li>
-                                <li>Padrões inconscientes</li>
-                            </ul>
-                            <p>Entender o que pode estar influenciando suas <strong>escolhas</strong> sem que você perceba.</p>
+                        <ul class="card-dark-list">
+                            <li>Crenças limitantes</li>
+                            <li>Bloqueios mentais</li>
+                            <li>Padrões inconscientes</li>
+                        </ul>
+                        <p>Entender o que pode estar influenciando suas <strong>escolhas</strong> sem que você perceba.
+                        </p>
                     </article>
 
                     <article class="card-dark">
                         <h2>OS PADRÕES <br>
                             QUE SE <span>REPETEM</span>
                         </h2>
-                            <img src="img/Ícone Repetição (2).png" alt="Ilustração de Repetição" class="card-image">
-                            <ul class="card-dark-list">
-                                <li>Autossabotagem</li>
-                                <li>Procrastinação</li>
-                                <li>Falta de constância</li>
-                            </ul>
-                            <p>Por que você sabe o que precisa fazer, mas <strong>continua</strong> fazendo diferente?</p>
+                        <img src="img/Ícone Repetição (2).png" alt="Ilustração de Repetição" class="card-image">
+                        <ul class="card-dark-list">
+                            <li>Autossabotagem</li>
+                            <li>Procrastinação</li>
+                            <li>Falta de constância</li>
+                        </ul>
+                        <p>Por que você sabe o que precisa fazer, mas <strong>continua</strong> fazendo diferente?</p>
                     </article>
 
                     <article class="card-dark">
@@ -171,12 +170,13 @@
                             <span>CARREGA</span>
                         </h2>
                         <img src="img/Ícone MySelf(3).png" alt="Ilustração de Myself" class="card-image">
-                            <ul class="card-dark-list">
-                                <li>Medo</li>
-                                <li>Culpa</li>
-                                <li>Necessidade de aprovação</li>
-                            </ul>
-                            <p>Aquilo que <strong>aconteceu</strong> não precisa determinar todos os seus próximos capítulos.</p>
+                        <ul class="card-dark-list">
+                            <li>Medo</li>
+                            <li>Culpa</li>
+                            <li>Necessidade de aprovação</li>
+                        </ul>
+                        <p>Aquilo que <strong>aconteceu</strong> não precisa determinar todos os seus próximos
+                            capítulos.</p>
                     </article>
 
                     <article class="card-dark">
@@ -189,7 +189,8 @@
                             <li>Autoimagem</li>
                             <li>Zona de conforto</li>
                         </ul>
-                        <p>Você não é apenas aquilo que <strong>aconteceu</strong> ou que aprendeu a acreditar sobre si mesmo.</p>
+                        <p>Você não é apenas aquilo que <strong>aconteceu</strong> ou que aprendeu a acreditar sobre si
+                            mesmo.</p>
                     </article>
 
                     <article class="card-dark">
@@ -203,7 +204,8 @@
                             <li>Decisão</li>
                             <li>Comportamento</li>
                         </ul>
-                        <p>Porque compreender é importante. Mas <strong>transformar</strong> compreensão em comportamento é o que muda resultados.</p>
+                        <p>Porque compreender é importante. Mas <strong>transformar</strong> compreensão em
+                            comportamento é o que muda resultados.</p>
                     </article>
                 </div>
             </div>
@@ -217,10 +219,13 @@
                 <div class="experience-cards">
                     <article class="experience-card">
                         <h3>PARA QUEM É O <span>EXPERIENCE?</span></h3>
-                        <p>Para quem percebe que existe uma distância entre aquilo que sabe, aquilo que faz e aquilo que deseja alcançar.</p>
+                        <p>Para quem percebe que existe uma distância entre aquilo que sabe, aquilo que faz e aquilo que
+                            deseja alcançar.</p>
                         <p>Para quem quer <strong>compreender</strong> seus padrões, crenças e comportamentos.</p>
-                        <p>Para quem quer <strong>romper</strong> ciclos de procrastinação, autossabotagem e falta de constância.</p>
-                        <p>Para quem quer <strong>desenvolver</strong> mais consciência sobre suas decisões, emoções e comportamentos.</p>
+                        <p>Para quem quer <strong>romper</strong> ciclos de procrastinação, autossabotagem e falta de
+                            constância.</p>
+                        <p>Para quem quer <strong>desenvolver</strong> mais consciência sobre suas decisões, emoções e
+                            comportamentos.</p>
                     </article>
 
                     <div class="experience-divider" aria-hidden="true"></div>
@@ -228,7 +233,9 @@
                     <article class="experience-card">
                         <h3>NÃO É SOBRE SE <span>MOTIVAR.</span></h3>
                         <p>É sobre entender o que acontece quando a <strong>motivação</strong> acaba.</p>
-                        <p>O Experience não foi criado para entregar apenas mais uma dose de motivação. Foi criado para provocar consciência sobre padrões que influenciam suas <strong>escolhas</strong> e <strong>comportamentos</strong>.</p>
+                        <p>O Experience não foi criado para entregar apenas mais uma dose de motivação. Foi criado para
+                            provocar consciência sobre padrões que influenciam suas <strong>escolhas</strong> e
+                            <strong>comportamentos</strong>.</p>
                     </article>
                 </div>
             </div>
@@ -244,15 +251,56 @@
                     <h3>QUEM É <span>RODRIGO MONTEIRO</span></h3>
                     <article class="rodrigo-card">
                         <strong>Professor, Hipnólogo e Treinador Comportamental</strong>
-                        <p>Há quase 20 anos atuando na educação e há mais de 15 anos dedicado ao <strong>desenvolvimento humano, comportamento</strong> e <strong>treinamento de pessoas</strong>.</p>
-                        <p>Ao longo dessa trajetória, construiu sua atuação a partir de estudos e formações em <strong>Hipnose, Neurociência, PNL, Programação Mental e desenvolvimento humano</strong>, além da experiência prática com milhares de pessoas em atendimentos, palestras e treinamentos.</p>
-                        <p>É o criador do <strong>Mente Inabalável</strong>, uma experiência que conecta mente, comportamento, consciência e ação.</p>
+                        <p>Há quase 20 anos atuando na educação e há mais de 15 anos dedicado ao <strong>desenvolvimento
+                                humano, comportamento</strong> e <strong>treinamento de pessoas</strong>.</p>
+                        <p>Ao longo dessa trajetória, construiu sua atuação a partir de estudos e formações em
+                            <strong>Hipnose, Neurociência, PNL, Programação Mental e desenvolvimento humano</strong>,
+                            além da experiência prática com milhares de pessoas em atendimentos, palestras e
+                            treinamentos.</p>
+                        <p>É o criador do <strong>Mente Inabalável</strong>, uma experiência que conecta mente,
+                            comportamento, consciência e ação.</p>
                         <strong>“Você não é o seu padrão."</strong>
                     </article>
                 </div>
             </div>
         </section>
     </main>
+
+    <script>
+        const heroVideo = document.querySelector(".hero-video");
+        const muteButton = document.querySelector(".video-mute");
+        const volumeControl = document.querySelector("#video-volume");
+
+        function syncMuteUI() {
+            const isMuted = heroVideo.muted || heroVideo.volume === 0;
+            muteButton.textContent = isMuted ? "ATIVAR SOM" : "MUTAR";
+            muteButton.setAttribute("aria-pressed", String(isMuted));
+        }
+
+        // Autoplay começa mutado (exigência dos navegadores). Assim que o
+        // visitante interagir com a página, tentamos deixar o vídeo tocando.
+        document.addEventListener("pointerdown", () => {
+            heroVideo.play().catch(() => {});
+        }, { once: true, passive: true });
+
+        muteButton.addEventListener("click", () => {
+            heroVideo.muted = !heroVideo.muted;
+            if (!heroVideo.muted && heroVideo.volume === 0) {
+                heroVideo.volume = 1;
+                volumeControl.value = "1";
+            }
+            heroVideo.play().catch(() => {});
+            syncMuteUI();
+        });
+
+        volumeControl.addEventListener("input", () => {
+            heroVideo.volume = Number(volumeControl.value);
+            heroVideo.muted = heroVideo.volume === 0;
+            syncMuteUI();
+        });
+
+        syncMuteUI();
+    </script>
 
 </body>
 

@@ -50,6 +50,7 @@ a {
     width: 100%;
     position: relative;
     overflow: hidden;
+    isolation: isolate;
     background: #020202;
     aspect-ratio: 16 / 9;
     min-height: 340px;
@@ -77,18 +78,32 @@ a {
     height: 100%;
     margin: 0 auto;
     position: relative;
-    z-index: 2;
+    z-index: 10;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 28px 5vw 40px;
+    justify-content: flex-end;
+    padding: 28px 5vw 56px;
 }
 
 /* Marca */
 .brand {
+    position: absolute;
+    top: 28px;
+    left: 5vw;
+    z-index: 11;
+    width: fit-content;
+    height: fit-content;
     display: flex;
     align-items: center;
     gap: 10px;
+    color: #ffffff;
+}
+
+.brand .png {
+    display: block;
+    width: min(180px, 35vw);
+    height: auto;
+    object-fit: contain;
 }
 
 .brand-icon {
@@ -122,23 +137,75 @@ a {
     margin-top: 3px;
 }
 
-/* Placeholder do vídeo (fundo cheio da seção) */
-.video-placeholder {
+/* Vídeo de fundo da seção */
+.hero-video {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background:
-        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.5)),
-        radial-gradient(circle at 52% 40%, rgba(70, 90, 110, .28), transparent 32%),
-        #090909;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #020202;
+    pointer-events: none;
+    /* Alguns navegadores (Chrome/Edge no Windows, principalmente) usam uma
+       camada de vídeo por hardware que ignora o z-index e cobre TUDO na
+       página, mesmo elementos com z-index maior. Um filter (mesmo neutro)
+       força o navegador a compor o vídeo normalmente, junto com o resto
+       da página, resolvendo esse bug. */
+    filter: brightness(1);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+/* Garante que os controles nativos do navegador nunca voltem a cobrir
+   a logo e os botões de som customizados (Safari/iOS costuma renderizar
+   os controles nativos numa camada acima do restante da página). */
+.hero-video::-webkit-media-controls,
+.hero-video::-webkit-media-controls-enclosure,
+.hero-video::-webkit-media-controls-panel,
+.hero-video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+.video-audio-controls {
+    position: absolute;
+    right: 5vw;
+    top: 24px;
+    z-index: 12;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 12px;
-    color: #8b8b8b;
-    font-size: 12px;
-    letter-spacing: 1px;
+    gap: 10px;
+    padding: 8px 10px;
+    border: 1px solid rgba(255, 255, 255, .28);
+    border-radius: 6px;
+    background: rgba(0, 0, 0, .7);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    pointer-events: auto;
+}
+
+.video-mute {
+    border: 0;
+    padding: 4px 0;
+    background: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    font: inherit;
+}
+
+.video-mute:hover,
+.video-mute:focus-visible {
+    color: var(--blue-light);
+}
+
+#video-volume {
+    width: 92px;
+    accent-color: var(--blue);
+    cursor: pointer;
 }
 
 .play-icon {
@@ -565,6 +632,27 @@ a {
 
     .hero-content {
         padding: 22px 20px 12px;
+    }
+
+    .brand {
+        top: 22px;
+        left: 20px;
+    }
+
+    .video-audio-controls {
+        right: 12px;
+        top: 12px;
+        padding: 6px 8px;
+        gap: 6px;
+        font-size: 9px;
+    }
+
+    .video-audio-controls label {
+        display: none;
+    }
+
+    #video-volume {
+        width: 56px;
     }
 
     .brand-icon {
