@@ -268,8 +268,27 @@
 
     <script>
         const heroVideo = document.querySelector(".hero-video");
+        const hero = document.querySelector(".hero");
         const muteButton = document.querySelector(".video-mute");
         const volumeControl = document.querySelector("#video-volume");
+        let controlsHideTimer;
+
+        function showVideoControls() {
+            if (!window.matchMedia("(min-width: 701px) and (hover: hover)").matches) {
+                return;
+            }
+
+            hero.classList.add("video-controls-visible");
+            clearTimeout(controlsHideTimer);
+            controlsHideTimer = setTimeout(() => {
+                if (!hero.matches(":focus-within")) {
+                    hero.classList.remove("video-controls-visible");
+                }
+            }, 800);
+        }
+
+        hero.addEventListener("mouseenter", showVideoControls);
+        hero.addEventListener("mousemove", showVideoControls);
 
         function syncMuteUI() {
             const isMuted = heroVideo.muted || heroVideo.volume === 0;
