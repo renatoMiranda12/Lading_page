@@ -18,13 +18,22 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
 }
 
 body {
     background: #202020;
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
-    min-width: 320px;
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
+}
+
+main {
+    overflow-x: hidden;
 }
 
 a {
@@ -89,7 +98,7 @@ a {
 .brand {
     position: absolute;
     top: 0px;
-    left: 4vw;
+    left: 0;
     z-index: 11;
     width: fit-content;
     height: fit-content;
@@ -392,6 +401,11 @@ a {
     border-radius: 25px;
     background: var(--black);
     text-align: center;
+    transition: transform .2s ease;
+}
+
+.card-dark:hover {
+    transform: translateY(-3px);
 }
 
 .card-dark:nth-child(2) {
@@ -644,12 +658,17 @@ a {
         min-height: 500px;
     }
 
+    .hero-video {
+        object-fit: cover;
+        object-position: center top;
+    }
+
     .hero-content {
         padding: 22px 20px 12px;
     }
 
     .brand {
-        top: 14px;
+        top: 0;
         left: 14px;
     }
 
@@ -717,6 +736,7 @@ a {
     .sobre-experience {
         display: flex;
         flex-direction: column;
+        gap: 24px;
         padding: 42px 0 0;
     }
 
@@ -730,11 +750,10 @@ a {
         inset: auto;
         order: 2;
         width: 100%;
-        height: clamp(260px, 75vw, 420px);
-        margin-top: 24px;
+        height: clamp(340px, 60vw, 320px);
         background:
             linear-gradient(180deg, #020202 0%, rgba(2, 2, 2, 0) 30%),
-            url("img/Wallpaper\ águia.png") right 20% center / cover no-repeat;
+            url("img/Wallpaper\ águia\ cel.png") center / contain no-repeat;
     }
 
     .experience-cards {
@@ -763,7 +782,7 @@ a {
     .sobre-rodrigo {
         display: flex;
         flex-direction: column;
-        padding: 36px 20px 0;
+        padding: 36px 20px 32px;
         min-height: 0;
     }
 
@@ -798,9 +817,10 @@ a {
         position: relative;
         inset: auto;
         order: 2;
-        width: calc(100% + 40px);
-        min-height: clamp(240px, 75vw, 340px);
-        margin-left: -12%;
+        width: 100%;
+        aspect-ratio: 673 / 768;
+        margin-left: 0;
+        background-image: url("img/Wallpaper\ Rodrigo\ cel.png");
         background-position: center;
         background-size: contain;
     }
