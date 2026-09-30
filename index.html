@@ -27,7 +27,8 @@
             <div class="video-audio-controls" aria-label="Controles de áudio do vídeo">
                 <button class="video-mute" type="button" aria-pressed="true">ATIVAR SOM</button>
                 <label for="video-volume">VOLUME</label>
-                <input id="video-volume" type="range" min="0" max="1" step="0.01" value="1" aria-label="Volume do vídeo">
+                <input id="video-volume" type="range" min="0" max="1" step="0.01" value="1"
+                    aria-label="Volume do vídeo">
             </div>
 
             <div class="hero-content">
@@ -235,7 +236,8 @@
                         <p>É sobre entender o que acontece quando a <strong>motivação</strong> acaba.</p>
                         <p>O Experience não foi criado para entregar apenas mais uma dose de motivação. Foi criado para
                             provocar consciência sobre padrões que influenciam suas <strong>escolhas</strong> e
-                            <strong>comportamentos</strong>.</p>
+                            <strong>comportamentos</strong>.
+                        </p>
                     </article>
                 </div>
             </div>
@@ -256,11 +258,52 @@
                         <p>Ao longo dessa trajetória, construiu sua atuação a partir de estudos e formações em
                             <strong>Hipnose, Neurociência, PNL, Programação Mental e desenvolvimento humano</strong>,
                             além da experiência prática com milhares de pessoas em atendimentos, palestras e
-                            treinamentos.</p>
+                            treinamentos.
+                        </p>
                         <p>É o criador do <strong>Mente Inabalável</strong>, uma experiência que conecta mente,
                             comportamento, consciência e ação.</p>
                         <strong>“Você não é o seu padrão."</strong>
                     </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEXTA SEÇÃO -->
+        <section class="info-experience" id="info">
+            <div class="info-layout">
+                <div class="info-copy">
+                    <p>A EXPERIÊNCIA</p>
+                    <h2>UM DIA PARA SAIR<br>DO <span>AUTOMÁTICO</span></h2>
+                </div>
+
+                <div class="info-panel" aria-label="Detalhes da experiência">
+                    <div class="info-item">
+                        <div class="info-icon" aria-hidden="true">
+                            <img src="img/Ícone Agenda (1).png" alt="Ilustração de uma Agenda">
+                        </div>
+                        <p>5 de dezembro</p>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon" aria-hidden="true">
+                            <img src="img/Ícobe Horário (2).png" alt="Horário" />
+                        </div>
+                        <p>(a definir)</p>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon" aria-hidden="true">
+                            <img src="img/Ícone Lugar (3).png" alt="Localização" />
+                        </div>
+                        <p>(a definir)</p>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon" aria-hidden="true">
+                            <img src="img/Ícone Tempo (4).png" alt="Tempo" />
+                        </div>
+                        <p>imersão de aproximadamente 10 horas</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -299,7 +342,7 @@
         // Autoplay começa mutado (exigência dos navegadores). Assim que o
         // visitante interagir com a página, tentamos deixar o vídeo tocando.
         document.addEventListener("pointerdown", () => {
-            heroVideo.play().catch(() => {});
+            heroVideo.play().catch(() => { });
         }, { once: true, passive: true });
 
         muteButton.addEventListener("click", () => {
@@ -308,7 +351,7 @@
                 heroVideo.volume = 1;
                 volumeControl.value = "1";
             }
-            heroVideo.play().catch(() => {});
+            heroVideo.play().catch(() => { });
             syncMuteUI();
         });
 
