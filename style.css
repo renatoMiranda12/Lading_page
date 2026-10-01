@@ -1081,6 +1081,101 @@ a {
     color: #ffffff;
 }
 
+/* seção 10 */
+.faq-section {
+    padding: 64px 20px 80px;
+    background: #020202;
+}
+
+.faq-content {
+    width: min(740px, 100%);
+    margin: 0 auto;
+}
+
+.faq-eyebrow {
+    margin: 0 0 2px 16px;
+    color: var(--blue);
+    font-family: "FontTitle";
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.faq-title {
+    margin: 0 0 24px 16px;
+    color: #ffffff;
+    font-family: "FontTitle";
+    font-size: clamp(40px, 5vw, 54px);
+    font-weight: 900;
+    line-height: 0.84;
+}
+
+.faq-title span {
+    color: var(--blue);
+}
+
+.faq-list {
+    display: grid;
+    gap: 5px;
+}
+
+.faq-item {
+    overflow: hidden;
+    border-radius: 18px;
+    background: var(--black);
+}
+
+.faq-item summary {
+    position: relative;
+    min-height: 42px;
+    padding: 9px 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-family: "FontText";
+    font-size: 17px;
+    line-height: 1.2;
+    text-align: center;
+    list-style: none;
+    cursor: pointer;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: "";
+    position: absolute;
+    right: 14px;
+    width: 8px;
+    height: 8px;
+    border-right: 1.5px solid var(--blue-light);
+    border-bottom: 1.5px solid var(--blue-light);
+    transform: rotate(45deg);
+    transition: transform 180ms ease;
+}
+
+.faq-item[open] summary::after {
+    transform: rotate(225deg);
+}
+
+.faq-item summary:focus-visible {
+    outline: 2px solid var(--blue-light);
+    outline-offset: -2px;
+}
+
+.faq-item p {
+    margin: 0;
+    padding: 2px 28px 16px;
+    color: var(--muted);
+    font-family: "FontText";
+    font-size: 16px;
+    line-height: 1.45;
+    text-align: center;
+}
+
 
 /* 
    RESPONSIVIDADE
@@ -1147,6 +1242,32 @@ a {
 
     .investment-note {
         font-size: 11px;
+    }
+
+    .faq-section {
+        padding: 48px 20px 60px;
+    }
+
+    .faq-eyebrow,
+    .faq-title {
+        margin-left: 10px;
+    }
+
+    .faq-title {
+        margin-bottom: 22px;
+        font-size: clamp(28px, 8.2vw, 42px);
+        line-height: 0.9;
+    }
+
+    .faq-item summary {
+        min-height: 42px;
+        padding: 8px 34px 8px 16px;
+        font-size: 15px;
+    }
+
+    .faq-item p {
+        padding: 2px 16px 14px;
+        font-size: 14px;
     }
 
     .testimonials-title {
