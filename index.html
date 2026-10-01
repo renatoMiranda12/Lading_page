@@ -49,7 +49,7 @@
                         Um dia para sair do automático.
                     </p>
 
-                    <a class="cta-button" href="#reconheca">
+                    <a class="cta-button" href="#investimento">
                         QUERO PARTICIPAR
                     </a>
                 </div>
@@ -427,11 +427,34 @@
                     <span class="investment-lot">1º LOTE</span>
                     <p>R$ XXX,XX</p>
                 </div>
-
-                <a class="investment-cta" href="#investimento">QUERO PARTICIPAR</a>
+                
+                    <button class="investment-cta" type="button" aria-haspopup="dialog" aria-controls="interest-dialog">
+                        QUERO PARTICIPAR
+                    </button>
                 <p class="investment-note"><strong>Vagas limitadas.</strong> O valor e as condições podem mudar conforme o lote.</p>
             </div>
         </section>
+
+            <dialog class="interest-dialog" id="interest-dialog" aria-labelledby="interest-title">
+                <form class="interest-form" id="interest-form">
+                    <button class="interest-dialog-close" type="button" aria-label="Fechar formulário">&times;</button>
+                    <p class="interest-eyebrow">INSCRIÇÃO</p>
+                    <h2 id="interest-title">Confirme seus dados</h2>
+                    <p class="interest-description">Preencha os dados para registrar seu interesse e continuar para o pagamento.</p>
+
+                    <label for="interest-name">Nome completo</label>
+                    <input id="interest-name" name="full_name" type="text" autocomplete="name" maxlength="150" required>
+
+                    <label for="interest-email">E-mail</label>
+                    <input id="interest-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+
+                    <label for="interest-phone">Número de celular</label>
+                    <input id="interest-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" required>
+
+                    <p class="interest-form-status" id="interest-form-status" role="status" aria-live="polite"></p>
+                    <button class="investment-cta interest-submit" type="submit">CONFIRMAR PAGAMENTO</button>
+                </form>
+            </dialog>
 
         <!-- DÉCIMA SEÇÃO -->
         <section class="faq-section" id="duvidas" aria-labelledby="faq-title">
@@ -508,10 +531,16 @@
     </main>
 
     <script>
+        const PAYMENT_REDIRECT_URL = "";
         const heroVideo = document.querySelector(".hero-video");
         const hero = document.querySelector(".hero");
         const muteButton = document.querySelector(".video-mute");
         const volumeControl = document.querySelector("#video-volume");
+        const interestDialog = document.querySelector("#interest-dialog");
+        const interestForm = document.querySelector("#interest-form");
+        const interestStatus = document.querySelector("#interest-form-status");
+        const interestSubmit = interestForm.querySelector("[type='submit']");
+        const originalSubmitLabel = interestSubmit.textContent;
         let controlsHideTimer;
 
         function showVideoControls() {
@@ -560,6 +589,64 @@
         });
 
         syncMuteUI();
+
+        document.querySelector(".investment-cta[aria-controls='interest-dialog']")
+            .addEventListener("click", () => interestDialog.showModal());
+
+        interestDialog.querySelector(".interest-dialog-close")
+            .addEventListener("click", () => interestDialog.close());
+
+        interestDialog.addEventListener("click", (event) => {
+            if (event.target === interestDialog) {
+                interestDialog.close();
+            }
+        });
+
+        interestForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            interestStatus.textContent = "";
+
+            let paymentUrl = null;
+            if (PAYMENT_REDIRECT_URL.trim()) {
+                try {
+                    paymentUrl = new URL(PAYMENT_REDIRECT_URL);
+                    if (!["http:", "https:"].includes(paymentUrl.protocol)) {
+                        throw new Error();
+                    }
+                } catch {
+                    interestStatus.textContent = "O link em PAYMENT_REDIRECT_URL precisa ser uma URL http ou https válida.";
+                    return;
+                }
+            }
+
+            interestSubmit.disabled = true;
+            interestSubmit.textContent = "ENVIANDO...";
+
+            try {
+                const response = await fetch("api/register-interest.php", {
+                    method: "POST",
+                    body: new FormData(interestForm),
+                    headers: { Accept: "application/json" }
+                });
+                const result = await response.json().catch(() => ({}));
+
+                if (!response.ok || !result.success) {
+                    throw new Error(result.message || "Não foi possível salvar seus dados. Tente novamente.");
+                }
+
+                if (paymentUrl) {
+                    window.location.assign(paymentUrl.href);
+                    return;
+                }
+
+                interestStatus.textContent = "Cadastro salvo. Adicione o link de pagamento em PAYMENT_REDIRECT_URL no final do index.html para ativar o redirecionamento.";
+                interestSubmit.textContent = "CADASTRO SALVO";
+            } catch (error) {
+                interestStatus.textContent = error.message || "Não foi possível salvar seus dados. Tente novamente.";
+                interestSubmit.disabled = false;
+                interestSubmit.textContent = originalSubmitLabel;
+            }
+        });
     </script>
 
 </body>

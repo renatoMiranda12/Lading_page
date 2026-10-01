@@ -1087,16 +1087,21 @@ a {
 }
 
 .investment-cta {
+    width: 100%;
     min-height: 52px;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 16px;
     border: 1px solid var(--border);
     border-radius: 999px;
+    background: transparent;
     color: var(--blue);
     font-family: "FontTitle";
     font-size: 17px;
     font-weight: 700;
+    text-align: center;
+    cursor: pointer;
     transition: color .2s ease, background .2s ease;
 }
 
@@ -1117,6 +1122,107 @@ a {
 
 .investment-note strong {
     color: #ffffff;
+}
+
+.interest-dialog {
+    width: min(460px, calc(100% - 32px));
+    max-height: min(90vh, 720px);
+    margin: auto;
+    padding: 0;
+    overflow-y: auto;
+    border: 1px solid rgba(21, 152, 255, .55);
+    border-radius: 16px;
+    background: var(--black);
+    color: #ffffff;
+}
+
+.interest-dialog::backdrop {
+    background: rgba(0, 0, 0, .78);
+    backdrop-filter: blur(3px);
+}
+
+.interest-form {
+    position: relative;
+    display: grid;
+    gap: 10px;
+    padding: 34px;
+}
+
+.interest-dialog-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, .2);
+    border-radius: 50%;
+    background: transparent;
+    color: #ffffff;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.interest-eyebrow {
+    margin: 0;
+    color: var(--blue);
+    font-family: "FontTitle";
+    font-size: 12px;
+}
+
+.interest-form h2 {
+    margin: 0;
+    padding-right: 22px;
+    font-family: "FontTitle";
+    font-size: 26px;
+    line-height: 1.1;
+}
+
+.interest-description {
+    margin: 0 0 6px;
+    color: var(--muted);
+    font-family: "FontText";
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.interest-form label {
+    color: #ffffff;
+    font-family: "FontText";
+    font-size: 14px;
+}
+
+.interest-form input {
+    width: 100%;
+    min-height: 46px;
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 255, 255, .24);
+    border-radius: 6px;
+    background: #111111;
+    color: #ffffff;
+    font: inherit;
+}
+
+.interest-form input:focus-visible,
+.interest-dialog-close:focus-visible {
+    outline: 2px solid var(--blue-light);
+    outline-offset: 2px;
+}
+
+.interest-form-status {
+    min-height: 18px;
+    margin: 2px 0 0;
+    color: var(--muted);
+    font-family: "FontText";
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+.interest-submit:disabled {
+    cursor: wait;
+    opacity: .65;
 }
 
 /* seção 10 */
@@ -1277,6 +1383,15 @@ a {
     .investment-cta {
         min-height: 48px;
         font-size: 15px;
+    }
+
+    .interest-form {
+        gap: 8px;
+        padding: 30px 22px 22px;
+    }
+
+    .interest-form h2 {
+        font-size: 23px;
     }
 
     .investment-note {
