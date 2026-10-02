@@ -102,7 +102,7 @@ a {
 /* Marca */
 .brand {
     position: absolute;
-    top: 0;
+    top: clamp(16px, 3vw, 36px);
     left: 0;
     z-index: 11;
     width: fit-content;
@@ -264,18 +264,6 @@ a {
     display: none;
 }
 
-.play-icon {
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    padding-left: 4px;
-    background: rgba(20, 20, 20, .9);
-    color: #ffffff;
-    font-size: 20px;
-}
-
 /* Texto sobre o vídeo */
 .hero-copy {
     width: min(820px, 100%);
@@ -325,7 +313,7 @@ a {
 
 .cta-button:hover {
     background: var(--blue);
-    color: #000;
+    color: #fff;
     box-shadow: 0 0 25px rgba(0, 140, 255, .25);
 }
 
@@ -403,6 +391,7 @@ a {
     color: var(--muted);
     font-size: 20px;
     line-height: 1.3;
+    font-family: "FontText";
 }
 
 .card-light span {
@@ -489,6 +478,7 @@ a {
     color: var(--muted);
     font-size: 14px;
     line-height: 1.4;
+    font-family: "FontText";
 }
 
 .card-dark strong {
@@ -634,6 +624,7 @@ a {
 .rodrigo-card strong {
     color: #ffffff;
     font-weight: 700;
+    font-family: "FontText";
 }
 
 .rodrigo-image {
@@ -862,8 +853,8 @@ a {
     border: 2px solid var(--blue);
     border-radius: 999px;
     color: #ffffff;
-    font-family: "FontTitle";
-    font-size: clamp(12px, 1.2vw, 19px);
+    font-family: "FontText";
+    font-size: clamp(14px, 1.2vw, 19px);
     line-height: 1;
     text-transform: lowercase;
     text-align: center;
@@ -909,7 +900,7 @@ a {
 
 .include-box li + li {
     margin-top: 2px;
-    font-size: clamp(20px, 2vw, 32px);
+    font-size: clamp(18px, 1.8vw, 28px);
 }
 
 /* seção 8 */
@@ -1333,13 +1324,13 @@ a {
     .include-tags span {
         min-height: 42px;
         padding: 10px 12px;
-        font-size: clamp(12px, 3vw, 18px);
+        font-size: clamp(15px, 3vw, 18px);
     }
 
     .include-tags span:nth-child(2) {
         padding-left: 8px;
         padding-right: 8px;
-        font-size: clamp(11px, 3vw, 18px);
+        font-size: clamp(14px, 3vw, 18px);
     }
 
     .testimonials {
@@ -1407,10 +1398,18 @@ a {
         margin-left: 10px;
     }
 
+    .faq-eyebrow {
+        margin-left: 0;
+        text-align: center;
+    }
+
     .faq-title {
+        margin-left: 0;
         margin-bottom: 22px;
-        font-size: clamp(28px, 8.2vw, 42px);
+        font-size: clamp(20px, 8.2vw, 42px);
         line-height: 0.9;
+        text-align: center;
+        white-space: nowrap;
     }
 
     .faq-item summary {
@@ -1471,7 +1470,6 @@ a {
     }
 
     .brand {
-        top: 0;
         left: 14px;
     }
 
