@@ -501,7 +501,7 @@ a {
     inset: 0;
     background:
         linear-gradient(90deg, #020202 0%, rgba(2, 2, 2, .96) 28%, rgba(2, 2, 2, .82) 46%, rgba(2, 2, 2, .12) 100%),
-        url("img/Wallpaper\ águia.png") center / cover no-repeat;
+        url("img/wallpaper-aguia.png") center / cover no-repeat;
 }
 
 .experience-content {
@@ -631,7 +631,7 @@ a {
     position: absolute;
     z-index: 1;
     inset: 0;
-    background: url("img/Wallpaper\ Rodrigo.png") right 25% center / auto 100% no-repeat;
+    background: url("img/wallpaper-rodrigo.png") right 25% center / auto 100% no-repeat;
 }
 
 @media (min-width: 701px) {
@@ -642,7 +642,7 @@ a {
     .experience-image {
         background:
             linear-gradient(90deg, #020202 0%, rgba(2, 2, 2, .96) 28%, rgba(2, 2, 2, .82) 46%, rgba(2, 2, 2, .12) 100%) center / cover no-repeat,
-            url("img/Wallpaper\ águia.png") right 25% center / auto 100% no-repeat;
+            url("img/wallpaper-aguia.png") right 25% center / auto 100% no-repeat;
     }
 
     .cards-3 {
@@ -1565,7 +1565,7 @@ a {
         height: clamp(340px, 60vw, 320px);
         background:
             linear-gradient(180deg, #020202 0%, rgba(2, 2, 2, 0) 30%),
-            url("img/Wallpaper\ águia\ cel.png") center / contain no-repeat;
+            url("img/wallpaper-aguia-cel.png") center / contain no-repeat;
     }
 
     .experience-cards {
@@ -1632,7 +1632,7 @@ a {
         width: 100%;
         aspect-ratio: 673 / 768;
         margin-left: 0;
-        background-image: url("img/Wallpaper\ Rodrigo\ cel.png");
+        background-image: url("img/wallpaper-rodrigo-cel.png");
         background-position: center;
         background-size: contain;
     }
@@ -1744,7 +1744,7 @@ a {
     overflow: hidden;
     background:
         linear-gradient(180deg, rgba(0, 0, 0, .18) 0%, rgba(0, 0, 0, .04) 60%, rgba(0, 0, 0, .5) 100%),
-        url("img/WALLPAPER DECISÃO (1).png") center / min(100%, 1050px) auto no-repeat;
+        url("img/wallpaper-decisao.png") center / min(100%, 1050px) auto no-repeat;
     background-color: #000000;
 }
 
