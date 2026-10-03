@@ -429,9 +429,16 @@
                     Uma experiência presencial de aproximadamente 10 horas
                 </p>
 
-                <div class="investment-price" aria-label="Valor do primeiro lote: R$ XXX,XX">
+                <div class="investment-price" aria-label="De R$ 597,00 por R$ 297,00 no primeiro lote">
                     <span class="investment-lot">1º LOTE</span>
-                    <p>R$ XXX,XX</p>
+                    <div class="investment-offer-line">
+                        <div class="investment-original-line">
+                            <span class="investment-price-prefix">DE:</span>
+                            <del class="investment-original-price">R$ 597,00</del>
+                        </div>
+                        <span class="investment-discount">50% OFF</span>
+                    </div>
+                    <p><span class="investment-price-prefix">POR:</span> R$ 297,00</p>
                 </div>
                 
                     <button class="investment-cta" type="button" aria-haspopup="dialog" aria-controls="interest-dialog">
@@ -446,19 +453,43 @@
                     <button class="interest-dialog-close" type="button" aria-label="Fechar formulário">&times;</button>
                     <p class="interest-eyebrow">INSCRIÇÃO</p>
                     <h2 id="interest-title">Confirme seus dados</h2>
-                    <p class="interest-description">Preencha os dados para registrar seu interesse e continuar para o pagamento.</p>
+                    <p class="interest-description">Preencha seus dados e escolha como deseja pagar.</p>
 
-                    <label for="interest-name">Nome completo</label>
-                    <input id="interest-name" name="full_name" type="text" autocomplete="name" maxlength="150" required>
+                    <div class="interest-registration-fields">
+                        <label for="interest-name">Nome completo</label>
+                        <input id="interest-name" name="full_name" type="text" autocomplete="name" maxlength="150" required>
 
-                    <label for="interest-email">E-mail</label>
-                    <input id="interest-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+                        <label for="interest-email">E-mail</label>
+                        <input id="interest-email" name="email" type="email" autocomplete="email" maxlength="254" required>
 
-                    <label for="interest-phone">Número de celular</label>
-                    <input id="interest-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" required>
+                        <label for="interest-phone">Número de celular</label>
+                        <input id="interest-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" required>
+
+                        <fieldset class="payment-options">
+                            <legend>Forma de pagamento</legend>
+                            <label class="payment-option">
+                                <input type="radio" name="payment_method" value="pix" required>
+                                <span>À vista via Pix <strong>— R$ 297,00</strong></span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment_method" value="installments" required>
+                                <span>Parcelado <strong>— condições no checkout</strong></span>
+                            </label>
+                        </fieldset>
+                    </div>
 
                     <p class="interest-form-status" id="interest-form-status" role="status" aria-live="polite"></p>
                     <button class="investment-cta interest-submit" type="submit">IR PARA O PAGAMENTO</button>
+
+                    <section class="pix-payment-details" id="pix-payment-details" aria-labelledby="pix-payment-title" hidden>
+                        <h3 id="pix-payment-title">Pagamento à vista via Pix</h3>
+                        <p>Valor promocional do primeiro lote: <strong>R$ 297,00</strong></p>
+                        <img id="pix-qr-code" alt="QR Code para pagamento Pix" hidden>
+                        <label id="pix-copy-label" for="pix-copy-paste" hidden>Pix copia e cola</label>
+                        <textarea id="pix-copy-paste" rows="4" readonly hidden></textarea>
+                        <button class="investment-cta" id="pix-copy-button" type="button" hidden>COPIAR CÓDIGO PIX</button>
+                        <p class="pix-copy-status" id="pix-copy-status" role="status" aria-live="polite"></p>
+                    </section>
                 </form>
             </dialog>
 
@@ -499,7 +530,7 @@
                     </details>
                     <details class="faq-item">
                         <summary>Como funciona o pagamento?</summary>
-                        <p>Informações serão adicionadas em breve.</p>
+                        <p>O primeiro lote promocional custa R$ 297,00 à vista via Pix. Para parcelar, você será direcionado ao checkout assim que o link estiver disponível.</p>
                     </details>
                     <details class="faq-item">
                         <summary>Posso cancelar minha inscrição?</summary>
@@ -536,125 +567,6 @@
 
     </main>
 
-    <script>
-        const PAYMENT_REDIRECT_URL = "";
-        const heroVideo = document.querySelector(".hero-video");
-        const hero = document.querySelector(".hero");
-        const muteButton = document.querySelector(".video-mute");
-        const volumeControl = document.querySelector("#video-volume");
-        const interestDialog = document.querySelector("#interest-dialog");
-        const interestForm = document.querySelector("#interest-form");
-        const interestStatus = document.querySelector("#interest-form-status");
-        const interestSubmit = interestForm.querySelector("[type='submit']");
-        const originalSubmitLabel = interestSubmit.textContent;
-        let controlsHideTimer;
-
-        function showVideoControls() {
-            if (!window.matchMedia("(min-width: 701px) and (hover: hover)").matches) {
-                return;
-            }
-
-            hero.classList.add("video-controls-visible");
-            clearTimeout(controlsHideTimer);
-            controlsHideTimer = setTimeout(() => {
-                if (!hero.matches(":focus-within")) {
-                    hero.classList.remove("video-controls-visible");
-                }
-            }, 800);
-        }
-
-        hero.addEventListener("mouseenter", showVideoControls);
-        hero.addEventListener("mousemove", showVideoControls);
-
-        function syncMuteUI() {
-            const isMuted = heroVideo.muted || heroVideo.volume === 0;
-            muteButton.setAttribute("aria-label", isMuted ? "Ativar som" : "Desativar som");
-            muteButton.setAttribute("aria-pressed", String(!isMuted));
-        }
-
-        // Autoplay começa mutado (exigência dos navegadores). Assim que o
-        // visitante interagir com a página, tentamos deixar o vídeo tocando.
-        document.addEventListener("pointerdown", () => {
-            heroVideo.play().catch(() => { });
-        }, { once: true, passive: true });
-
-        muteButton.addEventListener("click", () => {
-            heroVideo.muted = !heroVideo.muted;
-            if (!heroVideo.muted && heroVideo.volume === 0) {
-                heroVideo.volume = 1;
-                volumeControl.value = "1";
-            }
-            heroVideo.play().catch(() => { });
-            syncMuteUI();
-        });
-
-        volumeControl.addEventListener("input", () => {
-            heroVideo.volume = Number(volumeControl.value);
-            heroVideo.muted = heroVideo.volume === 0;
-            syncMuteUI();
-        });
-
-        syncMuteUI();
-
-        document.querySelector(".investment-cta[aria-controls='interest-dialog']")
-            .addEventListener("click", () => interestDialog.showModal());
-
-        interestDialog.querySelector(".interest-dialog-close")
-            .addEventListener("click", () => interestDialog.close());
-
-        interestDialog.addEventListener("click", (event) => {
-            if (event.target === interestDialog) {
-                interestDialog.close();
-            }
-        });
-
-        interestForm.addEventListener("submit", async (event) => {
-            event.preventDefault();
-            interestStatus.textContent = "";
-
-            let paymentUrl = null;
-            if (PAYMENT_REDIRECT_URL.trim()) {
-                try {
-                    paymentUrl = new URL(PAYMENT_REDIRECT_URL);
-                    if (!["http:", "https:"].includes(paymentUrl.protocol)) {
-                        throw new Error();
-                    }
-                } catch {
-                    interestStatus.textContent = "O link em PAYMENT_REDIRECT_URL precisa ser uma URL http ou https válida.";
-                    return;
-                }
-            }
-
-            interestSubmit.disabled = true;
-            interestSubmit.textContent = "ENVIANDO...";
-
-            try {
-                const response = await fetch("api/register-interest.php", {
-                    method: "POST",
-                    body: new FormData(interestForm),
-                    headers: { Accept: "application/json" }
-                });
-                const result = await response.json().catch(() => ({}));
-
-                if (!response.ok || !result.success) {
-                    throw new Error(result.message || "Não foi possível salvar seus dados. Tente novamente.");
-                }
-
-                if (paymentUrl) {
-                    window.location.assign(paymentUrl.href);
-                    return;
-                }
-
-                interestStatus.textContent = "Cadastro salvo. Adicione o link de pagamento em PAYMENT_REDIRECT_URL no final do index.html para ativar o redirecionamento.";
-                interestSubmit.textContent = "CADASTRO SALVO";
-            } catch (error) {
-                interestStatus.textContent = error.message || "Não foi possível salvar seus dados. Tente novamente.";
-                interestSubmit.disabled = false;
-                interestSubmit.textContent = originalSubmitLabel;
-            }
-        });
-    </script>
-
+    <script src="js/script.js"></script>
 </body>
-
 </html>

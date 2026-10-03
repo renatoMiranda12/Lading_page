@@ -1098,7 +1098,7 @@ a {
 
 .investment-lot {
     position: absolute;
-    top: -10px;
+    top: -20px;
     left: -25px;
     color: var(--blue);
     font-family: "FontTitle";
@@ -1106,7 +1106,49 @@ a {
     font-weight: 700;
 }
 
+.investment-offer-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.investment-original-line {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--muted);
+    font-family: "FontTitle";
+    font-size: 18px;
+    line-height: 1;
+}
+
+.investment-discount {
+    color: var(--blue);
+    font-family: "FontTitle";
+    font-size: 50px;
+    font-weight: 900;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.investment-original-price {
+    color: inherit;
+}
+
+.investment-price-prefix {
+    font-size: 0.4em;
+    font-weight: 700;
+    vertical-align: middle;
+}
+
+.investment-original-line .investment-price-prefix {
+    font-size: 0.75em;
+}
+
 .investment-price p {
+    margin: 0;
     color: #ffffff;
     font-family: "FontTitle";
     font-size: clamp(44px, 6vw, 62px);
@@ -1223,6 +1265,11 @@ a {
     font-size: 14px;
 }
 
+.interest-registration-fields {
+    display: grid;
+    gap: 10px;
+}
+
 .interest-form input {
     width: 100%;
     min-height: 46px;
@@ -1235,9 +1282,93 @@ a {
 }
 
 .interest-form input:focus-visible,
+.interest-form textarea:focus-visible,
 .interest-dialog-close:focus-visible {
     outline: 2px solid var(--blue-light);
     outline-offset: 2px;
+}
+
+.payment-options {
+    display: grid;
+    gap: 10px;
+    margin: 8px 0 2px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, .2);
+    border-radius: 8px;
+}
+
+.payment-options legend {
+    padding: 0 6px;
+    color: #ffffff;
+    font-family: "FontText";
+    font-size: 14px;
+}
+
+.payment-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    color: var(--muted) !important;
+    cursor: pointer;
+}
+
+.payment-option input {
+    width: auto;
+    min-height: 0;
+    margin: 3px 0 0;
+    accent-color: var(--blue);
+}
+
+.payment-option strong {
+    color: #ffffff;
+}
+
+.pix-payment-details {
+    display: grid;
+    justify-items: center;
+    gap: 12px;
+    text-align: center;
+}
+
+.pix-payment-details h3,
+.pix-payment-details p {
+    margin: 0;
+}
+
+.pix-payment-details h3 {
+    font-family: "FontTitle";
+    font-size: 20px;
+}
+
+.pix-payment-details img {
+    width: min(240px, 100%);
+    height: auto;
+    padding: 8px;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.interest-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 255, 255, .24);
+    border-radius: 6px;
+    background: #111111;
+    color: #ffffff;
+    font: inherit;
+    overflow-wrap: anywhere;
+    resize: vertical;
+}
+
+.pix-copy-status {
+    min-height: 18px;
+    color: var(--muted);
+    font-family: "FontText";
+    font-size: 13px;
+}
+
+.interest-form [hidden] {
+    display: none;
 }
 
 .interest-form-status {
@@ -1376,41 +1507,78 @@ a {
     }
 
     .investment-section {
-        padding: 32px 14px 48px;
+        padding: 32px 14px 44px;
     }
 
     .investment-card {
         min-height: 0;
-        padding: 14px 20px 36px;
-        border-radius: 24px;
+        padding: 20px clamp(16px, 5vw, 24px) 30px;
+        border: 1px solid rgba(255, 255, 255, .08);
+        border-radius: 22px;
         text-align: center;
     }
 
     .investment-title {
-        font-size: clamp(24px, 6vw, 30px);
+        margin-bottom: 12px;
+        font-size: clamp(23px, 6vw, 28px);
     }
 
     .investment-brand {
         min-height: 0;
-        aspect-ratio: 3.3 / 1;
-        border-radius: 22px;
+        aspect-ratio: 3.1 / 1;
+        border-radius: 18px;
     }
 
     .investment-brand img {
-        width: 88%;
+        width: 90%;
     }
 
     .investment-event-info {
-        margin: 14px 4px 44px;
-        font-size: 15px;
+        margin: 16px 0 34px;
+        font-size: clamp(14px, 3.8vw, 16px);
+        line-height: 1.3;
+    }
+
+    .investment-price {
+        width: 100%;
+        margin-bottom: 18px;
+    }
+
+    .investment-lot {
+        position: static;
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 8px;
+        font-size: 13px;
+        text-align: left;
+    }
+
+    .investment-offer-line {
+        width: 100%;
+        gap: 8px;
+        margin-bottom: 6px;
+    }
+
+    .investment-original-line {
+        gap: 4px;
+        font-size: clamp(14px, 4vw, 17px);
+        white-space: nowrap;
+    }
+
+    .investment-original-line .investment-price-prefix {
+        font-size: 0.65em;
+    }
+
+    .investment-discount {
+        font-size: clamp(24px, 7vw, 30px);
     }
 
     .investment-price p {
-        font-size: clamp(40px, 10vw, 54px);
+        font-size: clamp(36px, 10vw, 48px);
     }
 
     .investment-cta {
-        min-height: 48px;
+        min-height: 50px;
         font-size: 15px;
     }
 
@@ -1424,7 +1592,10 @@ a {
     }
 
     .investment-note {
+        max-width: 320px;
+        margin: 10px auto 0;
         font-size: 13px;
+        line-height: 1.45;
     }
 
     .faq-section {
