@@ -1,8 +1,8 @@
 // Adicione a URL do checkout de pagamento parcelado entre as aspas.
 const INSTALLMENT_REDIRECT_URL = "";
-// Adicione o código Pix "copia e cola" da cobrança de R$ 297,00 entre as aspas.
+// Configure os dados reais de pagamento somente no ambiente de produção.
 const PIX_COPY_PASTE = "";
-// Adicione o caminho da imagem do QR Code Pix entre as aspas (ex.: "img/qrcode-pix.png").
+//Adicione a URL da imagem do QR Code do Pix entre as aspas.
 const PIX_QR_CODE_IMAGE = "";
 const heroVideo = document.querySelector(".hero-video");
 const hero = document.querySelector(".hero");
