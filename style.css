@@ -113,6 +113,12 @@ a {
     color: #ffffff;
 }
 
+@media (min-width: 701px) {
+    .brand {
+        left: clamp(10px, 4vw, 115px);
+    }
+}
+
 .brand .png {
     display: block;
     width: min(400px, 38vw);
@@ -204,6 +210,13 @@ a {
 
     .hero.video-controls-visible .video-audio-controls,
     .hero:focus-within .video-audio-controls {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@media (min-width: 701px) and (hover: none) {
+    .video-audio-controls {
         visibility: visible;
         opacity: 1;
     }
@@ -1877,9 +1890,17 @@ a {
 
     .info-item {
         gap: 12px;
-        min-height: 54px;
-        padding: 8px 10px 8px 8px;
-        border-radius: 999px;
+        min-height: 64px;
+        padding: 10px 12px 10px 54px;
+        border-radius: 28px;
+    }
+
+    .info-item p {
+        min-width: 0;
+        display: block;
+        font-size: clamp(14px, 4vw, 18px);
+        line-height: 1.2;
+        overflow-wrap: anywhere;
     }
 
     .info-icon {
